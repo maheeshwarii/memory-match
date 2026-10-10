@@ -1,0 +1,26 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Supabase Connection Test</title>
+  </head>
+  <body>
+    <h1>Memory Match Backend Test</h1>
+    <pre id="result">Testing connection...</pre>
+    <script type="module">
+      import { getGuestSession } from '/src/supabase.js'
+
+      const result = document.querySelector('#result')
+
+      try {
+        const session = await getGuestSession()
+        result.textContent =
+          'SUCCESS! Guest authentication works.\nUser ID: ' +
+          session.user.id
+      } catch (error) {
+        result.textContent = 'FAILED: ' + error.message
+      }
+    </script>
+  </body>
+</html>
